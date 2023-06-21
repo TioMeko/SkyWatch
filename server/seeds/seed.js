@@ -14,7 +14,7 @@ db.once('open', async () => {
     const searches = await Search.insertMany(searchData);
 
     for (let search of searches) {
-        // randomly add each dog to a user
+        // randomly add each search to a user
         const randomUser = users[Math.floor(Math.random() * users.length)];
         randomUser.searches.push(search._id);
         await randomUser.save();
