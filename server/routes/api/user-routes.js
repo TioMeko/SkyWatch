@@ -13,6 +13,6 @@ router.route("/").post(createUser).put(authMiddleware);
 
 router.route("/login").post(login);
 
-router.route("/myWeather").get(authMiddleware, getSingleUser);
+router.route("/me").get(authMiddleware, getSingleUser);
 
 module.exports = router;
