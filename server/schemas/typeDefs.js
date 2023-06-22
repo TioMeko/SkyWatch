@@ -28,6 +28,7 @@ const typeDefs = gql `
         login (email: String!, password: String!): Auth
         addUser (email: String!, password: String!): Auth
         addSearch (email: String!, city: String!, state: String!, country: String!): Search
+        deleteSearch (searchId: ID!): User
     }
 `;
 
