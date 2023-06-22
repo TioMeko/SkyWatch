@@ -10,6 +10,7 @@ const resolvers = {
     },
     user: async (parent, { email }) => {
       const user = await User.findOne({ email }).populate("searches");
+      console.log(user);
       return user;
     },
   },
@@ -29,8 +30,6 @@ const resolvers = {
       }
 
       const token = signToken(user);
-
-      console.log(`${user.email} has logged in!`);
 
       return { token, user };
     },
