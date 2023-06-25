@@ -5,6 +5,8 @@ const {
   login,
 } = require("../../controllers/user-controller");
 
+const seed = require("../../seeds/searchData.json");
+
 // import middleware
 const { authMiddleware } = require("../../utils/auth");
 
@@ -13,6 +15,6 @@ router.route("/").post(createUser).put(authMiddleware);
 
 router.route("/login").post(login);
 
-router.route("/me").get(authMiddleware, getSingleUser);
+router.route("/weather").get(authMiddleware, getSingleUser);
 
 module.exports = router;
