@@ -10,7 +10,6 @@ const resolvers = {
     },
     user: async (parent, { email }) => {
       const user = await User.findOne({ email }).populate("searches");
-      console.log(user);
       return user;
     },
   },
@@ -23,13 +22,13 @@ const resolvers = {
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
-      const correctpw = await user.isCorrectPassword(password);
 
-      if (!user || !correctpw) {
+      if (!user || !await user.isCorrectPassword(password)) {
         throw new AuthenticationError("Error: Wrong email or password");
       }
 
       const token = signToken(user);
+      console.log(`${user.email} has successfully logged in!`)
 
       return { token, user };
     },
