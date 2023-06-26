@@ -49,17 +49,4 @@ module.exports = {
     const token = signToken(user);
     res.json({ token, user });
   },
-
-  async dogInfo({ user, body }, res) {
-    try {
-      const updatedUser = await User.findOneAndUpdate(
-        { _id: user._id },
-        { $addToSet: { dogInfo: body } },
-        { new: true, runValidators: true }
-      );
-      return res.json(updatedUser);
-    } catch (err) {
-      return res.status(400).json(err);
-    }
-  },
 };
