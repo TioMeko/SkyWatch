@@ -13,7 +13,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    // Set dogInfo to be an array of data that adheres to the dogSchema
     searches: [
       {
         type: Schema.Types.ObjectId,
