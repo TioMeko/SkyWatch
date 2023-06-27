@@ -8,6 +8,7 @@ import {
   InMemoryCache,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -33,6 +34,8 @@ const client = new ApolloClient({
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ApolloProvider client={client}>
-    <App />
+    <ChakraProvider>
+      <App />
+    </ChakraProvider>
   </ApolloProvider>
 );
